@@ -11,10 +11,9 @@ class Student_create (forms.Form):
     faculty = forms.CharField()
     image = forms.FileField ()
     track = forms.ChoiceField(choices=choices )
-    # @staticmethod
-    # def clean_age(request):
-    #     age = request.POST["age"]
-    #     if age < 18 :
-    #         raise forms.ValidationError("age must be at least 18")
-    #     return age 
+    def clean_age(self):
+        age = self.cleaned_data["age"]
+        if age < 18 :
+            raise forms.ValidationError("age must be at least 18")
+        return age 
     
